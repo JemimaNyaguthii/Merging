@@ -27,28 +27,31 @@ function sortedArray(left,right){
 let numb=[2,13,5,4];
 console.log(numbers(numb));
 
-// A binary search algorithm finds the position of a
-//  specified input value within an array sorted by key value.
-// let num=[1,2,3,4,5,6,7,8,9]
-// let target=7
-function binary(num,target){
-    let left =0;
-    let right =num.length-1;
-    while (left<=right){ 
-        let middle=Math.floor((left+right)/2);
-        if(num[middle]===target){
-            return middle;
-        }
-        else if (num[middle]<target){
-            left=middle+1;
+// Given an array of unsorted numbers,return a sorted array
+// let num = [45,12,6,89,2,5]
+function num(numbs){
+    if(numbs.length <=1){
+        return numbs;
+    }
+    let middle=Math.floor(numbs.length/2);
+    let left =numbs.slice(0,middle);
+    let right=numbs.slice(middle);
+    return numArray(numb(left),numb(right));
+}
+function numArray(left,right){
+     empty =[];
+    while (left.length &&right.length){
+        if(left[0]<right[0]){
+            empty.push(left.shift())
         }
         else{
-            right=middle-1;
+            empty.push(right.shift())
         }
     }
-    return null
+    return[...empty,...left,...right];
+
+    
 }
-let num=[1,2,3,4,5,6,7,8,9]
-let target=7;
-console.log(binary(num,target))
+let num=[2,13,5,4];
+console.log(num(numbs));
 
